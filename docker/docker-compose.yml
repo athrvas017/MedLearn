@@ -1,0 +1,84 @@
+version: "3.9"
+
+# ============================================================
+# MedLearn Agent — Docker Compose
+# ============================================================
+# Services:
+#   api      — FastAPI backend  (port 8000)
+#   frontend — Streamlit UI     (port 8501)
+#
+# Usage:
+#   docker-compose up --build
+#   docker-compose -f docker/docker-compose.yml config  (validate)
+# ============================================================
+
+services:
+
+  # ── FastAPI Backend ────────────────────────────────────────
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: api
+    container_name: medlearn-api
+    image: medlearn-api:latest
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=info
+    volumes:
+      # Persist vector store across restarts
+      - vectorstore:/app/app/vectorstore/chroma_db
+      # Mount source PDFs (read-only)
+      - ../data/source_pdfs:/app/data/source_pdfs:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+    networks:
+      - medlearn-net
+
+  # ── Streamlit Frontend ─────────────────────────────────────
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: frontend
+    container_name: medlearn-frontend
+    image: medlearn-frontend:latest
+    ports:
+      - "8501:8501"
+    env_file:
+      - ../.env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - BACKEND_URL=http://api:8000
+      - STANDALONE_MODE=0
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - medlearn-net
+
+# ── Volumes ───────────────────────────────────────────────────
+volumes:
+  vectorstore:
+    driver: local
+
+# ── Networks ──────────────────────────────────────────────────
+networks:
+  medlearn-net:
+    driver: bridge
