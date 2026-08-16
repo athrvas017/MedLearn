@@ -1,0 +1,241 @@
+[
+  {
+    "id": "tc-001",
+    "question": "What are the four chambers of the human heart and what role does each play?",
+    "ground_truth": "The four chambers are the right atrium, right ventricle, left atrium, and left ventricle. The right atrium receives deoxygenated blood from the body via the superior and inferior venae cavae. The right ventricle pumps this blood to the lungs through the pulmonary arteries. The left atrium receives oxygenated blood from the lungs via the pulmonary veins. The left ventricle, the most muscular chamber, pumps oxygenated blood to the body through the aorta.",
+    "reference_contexts": [
+      "The heart has four chambers: two superior atria and two inferior ventricles. The right atrium receives deoxygenated blood from systemic circulation through the superior and inferior venae cavae and the coronary sinus.",
+      "The right ventricle pumps blood into the pulmonary trunk, which routes it to the lungs for gas exchange. The left atrium receives newly oxygenated blood from the lungs via four pulmonary veins.",
+      "The left ventricle is the major pumping chamber for the systemic circuit; it ejects blood into the aorta through the aortic semilunar valve."
+    ],
+    "topic": "cardiovascular",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-002",
+    "question": "Describe the cardiac conduction system and how it coordinates heartbeat.",
+    "ground_truth": "The cardiac conduction system consists of the sinoatrial (SA) node, atrioventricular (AV) node, bundle of His (atrioventricular bundle), bundle branches, and Purkinje fibers. The SA node, located in the right atrium, acts as the natural pacemaker by generating electrical impulses that cause atrial contraction. The impulse then passes to the AV node, which delays it slightly to allow the atria to finish contracting before the ventricles begin. From the AV node, the signal travels through the bundle of His, splits into left and right bundle branches, and finally reaches the Purkinje fibers, which cause ventricular contraction.",
+    "reference_contexts": [
+      "The sinoatrial (SA) node sets the pace of the heartbeat and is known as the pacemaker. It is located in the superior wall of the right atrium.",
+      "The atrioventricular (AV) node, located in the inferior portion of the interatrial septum, delays the impulse approximately 0.1 second before relaying it to the atrioventricular bundle (bundle of His).",
+      "The bundle of His divides into right and left bundle branches that travel through the interventricular septum. Purkinje fibers then distribute the impulse through the ventricular myocardium causing ventricular contraction."
+    ],
+    "topic": "cardiovascular",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-003",
+    "question": "What is the difference between systemic and pulmonary circulation?",
+    "ground_truth": "Systemic circulation carries oxygenated blood from the left ventricle through the aorta to the body's tissues and returns deoxygenated blood to the right atrium via the venae cavae. Pulmonary circulation carries deoxygenated blood from the right ventricle through the pulmonary arteries to the lungs, where gas exchange occurs, and returns oxygenated blood to the left atrium via the pulmonary veins.",
+    "reference_contexts": [
+      "The systemic circuit begins at the left ventricle, which ejects blood into the aorta. From the aorta, blood flows into the systemic arteries, capillaries where gas exchange occurs with tissues, and then systemic veins that return blood to the right atrium.",
+      "The pulmonary circuit begins at the right ventricle, which pumps deoxygenated blood through the pulmonary trunk into the left and right pulmonary arteries. In the pulmonary capillaries, carbon dioxide is released and oxygen is absorbed. Oxygenated blood then returns to the left atrium via the pulmonary veins."
+    ],
+    "topic": "cardiovascular",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-004",
+    "question": "Explain the process of gas exchange in the alveoli.",
+    "ground_truth": "Gas exchange in the alveoli occurs by simple diffusion across the respiratory membrane. Oxygen from inhaled air diffuses across the thin alveolar walls and capillary endothelium into the blood, where it binds to hemoglobin in red blood cells. Simultaneously, carbon dioxide diffuses from the blood into the alveoli to be exhaled. This exchange is driven by partial pressure gradients — oxygen has a higher partial pressure in the alveoli than in the blood, and carbon dioxide has a higher partial pressure in the blood than in the alveoli.",
+    "reference_contexts": [
+      "Gas exchange occurs at the respiratory membrane, where oxygen diffuses from the alveolar air into the pulmonary capillaries, and carbon dioxide diffuses in the opposite direction. The respiratory membrane is composed of the alveolar epithelium and the capillary endothelium.",
+      "The process of gas exchange is driven by the partial pressure gradients of the gases. Oxygen moves from an area of higher partial pressure in the alveolus (approximately 104 mmHg) to an area of lower partial pressure in the blood (approximately 40 mmHg).",
+      "Carbon dioxide moves from the blood (partial pressure approximately 45 mmHg) into the alveolus (partial pressure approximately 40 mmHg). The large total surface area of the alveoli (about 70 square meters) facilitates rapid gas exchange."
+    ],
+    "topic": "respiratory",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-005",
+    "question": "What is the role of the diaphragm in breathing?",
+    "ground_truth": "The diaphragm is the primary muscle of respiration. During inhalation, the diaphragm contracts and moves downward, increasing the volume of the thoracic cavity. This expansion decreases the intrapleural and intrapulmonary pressures, causing air to flow into the lungs. During exhalation, the diaphragm relaxes and moves upward, reducing thoracic volume and increasing pressure, which forces air out of the lungs. Quiet exhalation is largely a passive process driven by the elastic recoil of the lungs and chest wall.",
+    "reference_contexts": [
+      "The diaphragm is a dome-shaped skeletal muscle that separates the thoracic and abdominal cavities. It is the most important muscle of inspiration. When the diaphragm contracts, it flattens and the thoracic cavity volume increases.",
+      "During inspiration, the volume of the thoracic cavity increases as the diaphragm descends and the external intercostal muscles contract. Boyle's law states that as volume increases, pressure decreases, so the intrapulmonary pressure drops below atmospheric pressure and air flows in.",
+      "During quiet expiration, the diaphragm and external intercostals relax. Elastic recoil of the lung tissue causes the lung to decrease in size, raising the intrapulmonary pressure above atmospheric pressure, and air flows out."
+    ],
+    "topic": "respiratory",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-006",
+    "question": "Describe the structure and function of a neuron.",
+    "ground_truth": "A neuron consists of three main parts: the cell body (soma), dendrites, and an axon. The cell body contains the nucleus and most organelles. Dendrites are branching extensions that receive signals from other neurons or sensory receptors. The axon is a single long projection that transmits electrical impulses (action potentials) away from the cell body toward other neurons, muscles, or glands. Many axons are wrapped in a myelin sheath formed by Schwann cells (PNS) or oligodendrocytes (CNS), which insulates the axon and increases the speed of nerve impulse conduction through saltatory conduction.",
+    "reference_contexts": [
+      "The neuron is the structural and functional unit of the nervous system. It consists of a cell body (soma) containing the nucleus, dendrites that receive stimuli, and an axon that transmits nerve impulses away from the cell body.",
+      "Myelin sheaths are produced by Schwann cells in the peripheral nervous system and oligodendrocytes in the central nervous system. The myelin sheath insulates the axon and speeds up impulse conduction via saltatory conduction, in which the impulse jumps from one node of Ranvier to the next.",
+      "Dendrites are highly branched extensions that provide an enormous surface area for receiving signals from other neurons. A single neuron may have hundreds of dendrites."
+    ],
+    "topic": "nervous",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-007",
+    "question": "How does a nerve impulse cross a synapse?",
+    "ground_truth": "When an action potential reaches the axon terminal (synaptic knob), it triggers voltage-gated calcium channels to open, allowing calcium ions to flow into the terminal. The influx of calcium causes synaptic vesicles containing neurotransmitters to fuse with the presynaptic membrane and release their contents into the synaptic cleft via exocytosis. The neurotransmitters diffuse across the cleft and bind to specific receptors on the postsynaptic membrane, opening ion channels that either excite or inhibit the postsynaptic neuron. The neurotransmitter is then removed by enzymatic degradation, reuptake, or diffusion.",
+    "reference_contexts": [
+      "When an action potential arrives at the axon terminal, it causes voltage-gated calcium channels to open. Calcium ions enter the terminal and trigger the synaptic vesicles to fuse with the presynaptic membrane, releasing neurotransmitters into the synaptic cleft.",
+      "Neurotransmitters diffuse across the synaptic cleft and bind to receptors on the postsynaptic membrane. This binding opens or closes ion channels, generating either excitatory or inhibitory postsynaptic potentials.",
+      "Neurotransmitter removal from the synaptic cleft occurs through enzymatic degradation (e.g., acetylcholinesterase breaks down acetylcholine), reuptake into the presynaptic neuron, or diffusion away from the synapse."
+    ],
+    "topic": "nervous",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-008",
+    "question": "What are the three types of muscle tissue and how do they differ?",
+    "ground_truth": "The three types of muscle tissue are skeletal, cardiac, and smooth. Skeletal muscle is striated, voluntary, and attaches to bones to produce movement. Its cells are multinucleated and cylindrical. Cardiac muscle is striated but involuntary, found only in the heart. Its cells are short, branched, and connected by intercalated discs that allow rapid signal transmission for coordinated contraction. Smooth muscle is non-striated, involuntary, and found in the walls of hollow organs like the stomach, intestines, and blood vessels. Its cells are spindle-shaped with a single central nucleus.",
+    "reference_contexts": [
+      "Skeletal muscle tissue is striated, voluntary, and multinucleated. Skeletal muscle cells are long cylindrical fibers that are attached to bones by tendons. Skeletal muscle is responsible for body movement and posture.",
+      "Cardiac muscle tissue is striated and involuntary. Cardiac muscle cells are short, branched, and typically uninucleate. They are connected by intercalated discs containing gap junctions and desmosomes, which allow coordinated contraction.",
+      "Smooth muscle tissue is non-striated and involuntary. It is found in the walls of hollow visceral organs, blood vessels, and airways. Smooth muscle cells are spindle-shaped (fusiform) with a single central nucleus."
+    ],
+    "topic": "musculoskeletal",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-009",
+    "question": "Explain the sliding filament theory of muscle contraction.",
+    "ground_truth": "The sliding filament theory explains how muscles contract at the sarcomere level. When a motor neuron stimulates a muscle fiber, calcium ions are released from the sarcoplasmic reticulum. Calcium binds to troponin on the thin (actin) filaments, causing tropomyosin to shift and expose the myosin-binding sites on actin. The myosin heads (thick filaments) then attach to actin, forming cross-bridges, and pivot in a power stroke that pulls the thin filaments toward the center of the sarcomere (M line). ATP binds to myosin, causing it to detach, re-cock, and repeat the cycle. This shortens the sarcomere without the filaments themselves changing length.",
+    "reference_contexts": [
+      "According to the sliding filament model, the thin filaments are pulled by the thick filaments toward the center of the sarcomere during contraction. Neither the thick nor thin filaments change in length; instead, they slide past each other.",
+      "When calcium ions bind to troponin, tropomyosin shifts to expose the active sites on actin. Myosin heads form cross-bridges with actin and undergo a power stroke, pulling the thin filaments inward. ATP is required for the detachment of myosin from actin.",
+      "Calcium release from the sarcoplasmic reticulum is triggered by the action potential propagating along the T-tubules. The calcium-troponin-tropomyosin interaction is the key regulatory mechanism for muscle contraction."
+    ],
+    "topic": "musculoskeletal",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "tc-010",
+    "question": "What are the major stages of food digestion in the human digestive system?",
+    "ground_truth": "Digestion begins in the mouth with mechanical digestion (chewing) and chemical digestion by salivary amylase, which breaks down starches. Food is then swallowed and travels through the esophagus to the stomach via peristalsis. In the stomach, hydrochloric acid and pepsin break down proteins, and churning further mechanically digests food into chyme. Chyme enters the small intestine (duodenum), where bile from the liver/gallbladder emulsifies fats and pancreatic enzymes continue digestion of proteins, fats, and carbohydrates. Most nutrient absorption occurs in the jejunum and ileum. The large intestine absorbs water and electrolytes and compacts waste into feces for elimination.",
+    "reference_contexts": [
+      "Digestion begins in the oral cavity where mechanical digestion occurs by chewing (mastication) and chemical digestion begins with salivary amylase acting on starch. The bolus is swallowed and moves through the esophagus by peristalsis.",
+      "In the stomach, hydrochloric acid (HCl) activates pepsinogen to pepsin, which begins protein digestion. Gastric motility churns food and mixes it with gastric juices to form chyme.",
+      "In the small intestine, pancreatic juice (containing trypsin, lipase, amylase) and bile from the liver further digest proteins, fats, and carbohydrates. The majority of nutrient absorption occurs across the walls of the jejunum and ileum. The large intestine absorbs water and electrolytes and forms feces."
+    ],
+    "topic": "digestive",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-011",
+    "question": "What is the role of the liver in digestion and metabolism?",
+    "ground_truth": "The liver plays a central role in digestion by producing bile, which is stored in the gallbladder and released into the duodenum to emulsify fats, breaking them into smaller droplets for easier digestion by lipases. Beyond digestion, the liver is critical for metabolism: it processes absorbed nutrients, converts glucose to glycogen for storage (glycogenesis) and back to glucose when needed (glycogenolysis), metabolizes proteins and lipids, produces plasma proteins like albumin and clotting factors, detoxifies drugs and toxins, and stores vitamins (A, D, E, K, B12) and minerals.",
+    "reference_contexts": [
+      "The liver produces bile, which is composed of bile salts, cholesterol, bilirubin, electrolytes, and water. Bile salts emulsify lipids in the small intestine, increasing the surface area for lipase activity.",
+      "The liver processes the nutrient-rich blood arriving from the hepatic portal vein. It is involved in carbohydrate metabolism (glycogenesis, glycogenolysis, gluconeogenesis), lipid metabolism, and protein metabolism including the synthesis of plasma proteins such as albumin and clotting factors.",
+      "The liver also functions in detoxification of drugs and metabolic waste products, storage of fat-soluble vitamins (A, D, E, K) and vitamin B12, and production of bile for fat digestion."
+    ],
+    "topic": "digestive",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-012",
+    "question": "What is the function of the nephron in the kidney?",
+    "ground_truth": "The nephron is the functional unit of the kidney responsible for filtering blood and producing urine. Each nephron consists of a glomerulus (a capillary tuft) enclosed by Bowman's capsule, a proximal convoluted tubule, the loop of Henle, a distal convoluted tubule, and a collecting duct. Blood filtration occurs at the glomerulus, where high pressure forces water, ions, glucose, and waste products into Bowman's capsule as filtrate. The proximal tubule reabsorbs most water, glucose, amino acids, and ions. The loop of Henle establishes a concentration gradient in the medulla. The distal tubule and collecting duct fine-tune reabsorption and secretion under hormonal control (ADH, aldosterone) to produce the final urine.",
+    "reference_contexts": [
+      "The nephron is the functional unit of the kidney. It consists of the renal corpuscle (glomerulus and Bowman's capsule) and renal tubule (proximal convoluted tubule, loop of Henle, distal convoluted tubule). The glomerulus filters blood under high pressure to produce filtrate.",
+      "The proximal convoluted tubule reabsorbs approximately 65% of the filtrate, including water, glucose, amino acids, and ions via active transport and osmosis. The loop of Henle creates a concentration gradient in the renal medulla through the countercurrent multiplier mechanism.",
+      "The distal convoluted tubule and collecting duct regulate the final composition of urine. Antidiuretic hormone (ADH) increases water reabsorption in the collecting duct, while aldosterone increases sodium reabsorption in the distal tubule."
+    ],
+    "topic": "urinary",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-013",
+    "question": "How does the endocrine system regulate blood glucose levels?",
+    "ground_truth": "Blood glucose levels are primarily regulated by the hormones insulin and glucagon, produced by the pancreatic islets of Langerhans. When blood glucose rises (e.g., after a meal), beta cells of the pancreas secrete insulin, which promotes cellular uptake of glucose, glycogenesis in the liver and muscles, and lipogenesis. This lowers blood glucose. When blood glucose drops (e.g., between meals), alpha cells secrete glucagon, which stimulates glycogenolysis (breakdown of glycogen to glucose) and gluconeogenesis (synthesis of glucose from non-carbohydrate sources) in the liver, raising blood glucose. This is a classic negative feedback loop.",
+    "reference_contexts": [
+      "Insulin is produced by the beta cells of the pancreatic islets. It is released when blood glucose levels rise and promotes glucose uptake by cells, glycogenesis, and lipogenesis, thereby lowering blood glucose concentration.",
+      "Glucagon is produced by the alpha cells of the pancreatic islets. When blood glucose levels drop, glucagon stimulates glycogenolysis and gluconeogenesis in the liver, releasing glucose into the blood.",
+      "The regulation of blood glucose is a negative feedback mechanism. Rising glucose triggers insulin release, and falling glucose triggers glucagon release, maintaining homeostasis."
+    ],
+    "topic": "endocrine",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-014",
+    "question": "What is the structure of a long bone and what are its major parts?",
+    "ground_truth": "A long bone (such as the femur or humerus) consists of a diaphysis (shaft), two epiphyses (ends), a medullary cavity, and several membrane layers. The diaphysis is the cylindrical shaft composed of compact bone surrounding the medullary (marrow) cavity, which contains yellow bone marrow in adults. Each epiphysis is the expanded end of the bone, composed mainly of spongy (cancellous) bone covered by a thin layer of compact bone. The epiphyseal plate (growth plate) is the region between the diaphysis and epiphysis where bone growth occurs in length during childhood. The periosteum covers the outer surface of the bone and is involved in bone growth, repair, and nutrition. The endosteum lines the medullary cavity.",
+    "reference_contexts": [
+      "A long bone has a shaft called the diaphysis, which is composed of compact bone surrounding a central medullary cavity containing marrow. Each end of the bone is called an epiphysis and is composed primarily of spongy bone covered by a thin layer of compact bone.",
+      "The epiphyseal plate (growth plate) is a layer of hyaline cartilage between the diaphysis and epiphysis that allows the bone to grow in length. In adults, this is replaced by the epiphyseal line.",
+      "The periosteum is a tough fibrous membrane that covers the outer surface of bone (except at joint surfaces). It contains osteoblasts for bone growth and repair. The endosteum lines the medullary cavity and contains osteoblasts and osteoclasts."
+    ],
+    "topic": "musculoskeletal",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-015",
+    "question": "Explain the immune response when a pathogen first enters the body.",
+    "ground_truth": "When a pathogen first enters the body, the innate (nonspecific) immune response acts as the first line of defense. Physical barriers such as the skin and mucous membranes prevent entry. If the pathogen breaches these barriers, phagocytic cells (macrophages, neutrophils) engulf and destroy it. Inflammation occurs, characterized by redness, heat, swelling, and pain, which increases blood flow and recruits more immune cells to the site. Natural killer (NK) cells attack infected cells. If the innate response cannot clear the pathogen, the adaptive (specific) immune response is activated. Antigen-presenting cells (like dendritic cells) present pathogen antigens to T cells. Helper T cells activate B cells, which produce specific antibodies (humoral immunity), and cytotoxic T cells directly destroy infected cells (cell-mediated immunity). Memory cells are formed for faster response upon re-exposure.",
+    "reference_contexts": [
+      "The innate immune system provides the first and second lines of defense. The first line includes physical barriers such as skin and mucous membranes. The second line includes phagocytes (neutrophils and macrophages), natural killer cells, inflammation, and fever.",
+      "The inflammatory response involves vasodilation, increased capillary permeability, and recruitment of phagocytes to the site of injury or infection. Cardinal signs include redness, heat, swelling, and pain.",
+      "The adaptive immune response is specific to particular antigens. Antigen-presenting cells activate helper T cells, which stimulate B cells to produce antibodies (humoral immunity) and cytotoxic T cells to destroy infected cells (cell-mediated immunity). Memory B and T cells provide long-lasting immunity."
+    ],
+    "topic": "immune",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "tc-016",
+    "question": "What is the difference between innate and adaptive immunity?",
+    "ground_truth": "Innate immunity is the body's nonspecific defense that is present from birth and responds immediately to any pathogen. It includes physical barriers (skin, mucous membranes), chemical barriers (lysozyme, stomach acid), phagocytic cells (macrophages, neutrophils), natural killer cells, the inflammatory response, and complement proteins. Adaptive immunity is specific, develops over time after exposure to particular antigens, and has memory. It includes humoral immunity (B cells producing antibodies) and cell-mediated immunity (T cells). Adaptive immunity takes days to mount on first exposure but responds rapidly upon subsequent encounters due to memory cells.",
+    "reference_contexts": [
+      "Innate immunity consists of defenses that are present at birth and are always available to provide rapid responses. It is non-specific and includes surface barriers, internal defenses such as phagocytes, NK cells, the inflammatory response, and the complement system.",
+      "Adaptive immunity is antigen-specific and develops after exposure. It includes humoral immunity mediated by B lymphocytes and their antibodies, and cellular immunity mediated by T lymphocytes.",
+      "A key feature of adaptive immunity is immunological memory. After the initial exposure, memory B cells and memory T cells persist in the body and mount a faster and stronger response upon re-exposure to the same antigen."
+    ],
+    "topic": "immune",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-017",
+    "question": "How does blood pressure regulation work via the renin-angiotensin-aldosterone system (RAAS)?",
+    "ground_truth": "When blood pressure drops or sodium levels decline, the juxtaglomerular cells of the kidney release renin into the blood. Renin converts angiotensinogen (produced by the liver) into angiotensin I. Angiotensin-converting enzyme (ACE), found primarily in lung capillaries, converts angiotensin I into angiotensin II. Angiotensin II is a potent vasoconstrictor that raises blood pressure directly and also stimulates the adrenal cortex to release aldosterone. Aldosterone acts on the distal tubule and collecting duct to increase sodium and water reabsorption, which increases blood volume and further raises blood pressure. The system also stimulates ADH release and thirst.",
+    "reference_contexts": [
+      "The renin-angiotensin-aldosterone system (RAAS) is activated when the juxtaglomerular cells of the kidney detect low blood pressure or low sodium. Renin is an enzyme that converts angiotensinogen to angiotensin I.",
+      "Angiotensin-converting enzyme (ACE), located predominantly in the pulmonary capillaries, converts angiotensin I to angiotensin II. Angiotensin II is a powerful vasoconstrictor and stimulates aldosterone secretion from the adrenal cortex.",
+      "Aldosterone acts on the distal convoluted tubule and collecting duct of the nephron to promote sodium reabsorption, which leads to water retention and increased blood volume. The net effect is an increase in blood pressure."
+    ],
+    "topic": "cardiovascular",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "tc-018",
+    "question": "What are the layers of the skin and their functions?",
+    "ground_truth": "The skin has two main layers: the epidermis and the dermis, underlain by the hypodermis (subcutaneous tissue). The epidermis is the outermost layer, composed of stratified squamous epithelium. It contains keratinocytes (producing keratin for protection), melanocytes (producing melanin for UV protection), Langerhans cells (immune defense), and Merkel cells (touch reception). The deepest epidermal layer (stratum basale) contains actively dividing stem cells. The dermis lies beneath the epidermis and contains connective tissue, blood vessels, nerve endings, hair follicles, sweat glands, and sebaceous glands. It provides strength and elasticity through collagen and elastin fibers. The hypodermis anchors the skin to underlying tissues and contains adipose tissue for insulation and energy storage.",
+    "reference_contexts": [
+      "The epidermis is the outermost layer of skin, composed of keratinized stratified squamous epithelium. It contains four types of cells: keratinocytes, melanocytes, Langerhans cells, and Merkel cells. The stratum basale is the deepest layer where mitosis occurs.",
+      "The dermis is composed of two layers: the papillary dermis (areolar connective tissue with dermal papillae) and the reticular dermis (dense irregular connective tissue with collagen and elastic fibers). The dermis contains blood vessels, nerve endings, hair follicles, and glands.",
+      "The hypodermis (subcutaneous layer) lies deep to the dermis and consists of areolar and adipose connective tissue. It anchors the skin to underlying structures and provides thermal insulation and energy storage."
+    ],
+    "topic": "integumentary",
+    "difficulty": "basic"
+  },
+  {
+    "id": "tc-019",
+    "question": "Explain how the autonomic nervous system controls heart rate.",
+    "ground_truth": "The autonomic nervous system (ANS) controls heart rate through its two divisions: the sympathetic and parasympathetic nervous systems. The parasympathetic division, via the vagus nerve (cranial nerve X), releases acetylcholine at the SA node, which slows the heart rate (negative chronotropic effect) and decreases the force of contraction. At rest, vagal tone predominates, keeping the resting heart rate around 75 bpm rather than the SA node's intrinsic rate of about 100 bpm. The sympathetic division releases norepinephrine, which binds to beta-1 adrenergic receptors on the SA node and myocardium, increasing the heart rate (positive chronotropic effect) and force of contraction (positive inotropic effect). The cardiovascular center in the medulla oblongata integrates sensory input and adjusts the balance between sympathetic and parasympathetic output.",
+    "reference_contexts": [
+      "The parasympathetic division of the ANS innervates the heart primarily through the vagus nerve. Acetylcholine released at the SA node decreases the rate of depolarization, slowing the heart rate. Vagal tone is dominant at rest.",
+      "The sympathetic division increases heart rate and contractility by releasing norepinephrine, which acts on beta-1 adrenergic receptors. The cardiac accelerator nerves stimulate the SA node, AV node, and ventricular myocardium.",
+      "The cardiovascular center in the medulla oblongata receives input from baroreceptors and chemoreceptors and adjusts the balance of sympathetic and parasympathetic output to regulate heart rate and blood pressure."
+    ],
+    "topic": "nervous",
+    "difficulty": "advanced"
+  },
+  {
+    "id": "tc-020",
+    "question": "What is the role of hemoglobin in oxygen transport?",
+    "ground_truth": "Hemoglobin is a protein found in red blood cells that is essential for oxygen transport. Each hemoglobin molecule consists of four polypeptide subunits (two alpha and two beta chains in adult hemoglobin), each containing a heme group with an iron atom at its center. Oxygen binds reversibly to the iron atoms, allowing each hemoglobin molecule to carry up to four oxygen molecules. In the lungs, where the partial pressure of oxygen is high, oxygen binds to hemoglobin forming oxyhemoglobin. In the tissues, where the partial pressure of oxygen is lower and carbon dioxide and H+ concentrations are higher, hemoglobin releases oxygen (the Bohr effect). Hemoglobin also transports about 23% of carbon dioxide from tissues to the lungs as carbaminohemoglobin.",
+    "reference_contexts": [
+      "Hemoglobin (Hb) is the oxygen-carrying protein in red blood cells. Each molecule contains four heme groups, and each heme group contains an iron ion (Fe2+) that can reversibly bind one molecule of oxygen. Fully saturated hemoglobin carries four O2 molecules.",
+      "In the pulmonary capillaries, high PO2 promotes oxygen loading onto hemoglobin. In the systemic capillaries, lower PO2 and the Bohr effect (increased CO2, H+, and temperature) promote oxygen unloading from hemoglobin.",
+      "Approximately 98.5% of oxygen in the blood is transported bound to hemoglobin as oxyhemoglobin (HbO2). Carbon dioxide is transported in three ways: dissolved in plasma (7-10%), bound to hemoglobin as carbaminohemoglobin (about 23%), and as bicarbonate ions in plasma (about 70%)."
+    ],
+    "topic": "cardiovascular",
+    "difficulty": "intermediate"
+  }
+]
