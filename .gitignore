@@ -1,0 +1,57 @@
+# ── Python ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ────────────────────────────────────
+.venv/
+venv/
+ENV/
+env/
+
+# ── Environment / secrets ───────────────────────────────────
+.env
+*.env.local
+
+# ── Testing ─────────────────────────────────────────────────
+# Unit / integration test files are kept local only.
+# Only RAGAS evaluation lives in the repo (evals/).
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ── IDE / OS ────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Planning docs (no .md except README) ───────────────────
+*.md
+!README.md
+
+# ── Generated / data artefacts ─────────────────────────────
+# Vector store is built at runtime via `python app/ingest.py`
+app/vectorstore/chroma_db/
+
+# Source PDFs are large — add your own from OpenStax
+data/source_pdfs/
+
+# RAGAS run artefacts
+evals/results/
+
+# Uploaded temp images
+tmp/
+*.tmp
