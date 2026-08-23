@@ -59,16 +59,23 @@ MedLearn/
 │   ├── agents/
 │   │   ├── captioner.py      # BLIP-2 image captioning
 │   │   ├── retriever.py      # ChromaDB vector retrieval
-│   │   ├── explainer.py      # Gemini explanation + citations
-│   │   ├── evaluator.py      # Faithfulness scoring
-│   │   ├── quiz_gen.py       # MCQ generation
+│   │   ├── explainer.py      # Gemini explanation + citations + fallback chain
+│   │   ├── evaluator.py      # Faithfulness scoring + fallback chain
+│   │   ├── quiz_gen.py       # MCQ generation + fallback chain
 │   │   └── router.py         # Input classification
 │   ├── graph.py              # LangGraph StateGraph assembly
 │   ├── ingest.py             # PDF → ChromaDB ingestion pipeline
 │   ├── main.py               # FastAPI REST API
 │   └── state.py              # AgentState TypedDict
-├── frontend/
-│   └── streamlit_app.py      # Streamlit UI (Clinical Teal design)
+├── frontend/                 # Modern React Interactive Atlas Frontend
+│   ├── src/
+│   │   ├── components/       # TopAppBar, PipelineStepper, ChatThread, InputBar, AtlasSidebar
+│   │   ├── services/api.ts   # FastAPI client with proxy & error handling
+│   │   ├── App.tsx           # Main workspace application
+│   │   └── index.css         # Glassmorphic Clinical Teal styling
+│   ├── streamlit_app.py      # Alternative Streamlit UI
+│   ├── package.json          # React, Vite, TailwindCSS, ReactMarkdown
+│   └── vite.config.ts        # Vite configuration & backend proxy
 ├── evals/
 │   ├── test_cases.json       # 15+ benchmark Q&A cases
 │   └── ragas_eval.py         # RAGAS evaluation runner
@@ -78,11 +85,10 @@ MedLearn/
 │   └── test_e2e.py           # End-to-end FR1–FR9 test suite
 ├── docker/
 │   ├── Dockerfile            # Multi-stage API + Frontend build
-│   └── docker-compose.yml    # API (8000) + Frontend (8501) services
-├── data/source_pdfs/         # OpenStax PDFs (add your own)
+│   └── docker-compose.yml    # API (8000) + Frontend services
+├── data/source_pdfs/         # OpenStax PDFs
 ├── requirements.txt
-├── .env.example
-└── micro_task.md             # Detailed task breakdown
+└── .env.example
 ```
 
 ---
@@ -108,35 +114,36 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env and add your keys:
+# Edit .env and add your Google Gemini API key:
 # GOOGLE_API_KEY=your_gemini_api_key
-# LANGSMITH_API_KEY=your_langsmith_key (optional)
+# GEMINI_MODEL=gemini-3.5-flash-lite
 ```
 
-### 3. Add source PDFs & ingest
+### 3. Add source PDFs & ingest (Optional if chroma_db present)
 
 Place OpenStax Anatomy & Physiology PDF(s) in `data/source_pdfs/`, then:
 
 ```bash
 python app/ingest.py
-# Expected: "Successfully ingested N documents into Chroma vector store"
 ```
 
-> **Free textbook:** Download from [OpenStax](https://openstax.org/details/books/anatomy-and-physiology-2e) (CC BY 4.0)
-
-### 4. Run the API
+### 4. Run the FastAPI Backend
 
 ```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-# Open: http://localhost:8000/docs
+# Open docs: http://localhost:8000/docs
 ```
 
-### 5. Run the Streamlit UI
+### 5. Run the React Interactive Atlas Frontend
 
 ```bash
-streamlit run frontend/streamlit_app.py
-# Open: http://localhost:8501
+cd frontend
+npm install
+npm run dev
+# Open UI: http://localhost:5173
 ```
+
+*(Optional: Streamlit interface also available via `streamlit run frontend/streamlit_app.py` on port 8501)*
 
 ---
 

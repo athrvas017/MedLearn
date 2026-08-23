@@ -41,7 +41,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # LLM Configuration — Google Gemini free tier
 # ---------------------------------------------------------------------------
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 
 SYSTEM_PROMPT = """You are MedLearn Quiz Generator — an educational quiz creator for medical/anatomy students.
 
@@ -127,43 +127,49 @@ def quiz_gen_node(state: Dict[str, Any]) -> Dict[str, Any]:
     user_prompt = "\n\n".join(context_parts)
     user_prompt += "\n\nGenerate 3-5 multiple choice questions based on the above content. Return ONLY a JSON array."
 
-    try:
-        llm = ChatGoogleGenerativeAI(
-            model=GEMINI_MODEL,
-            temperature=0.5,
-            max_output_tokens=2048,
-        )
+    candidate_models = list(dict.fromkeys([
+        GEMINI_MODEL,
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-flash-latest",
+    ]))
 
-        messages = [
-            SystemMessage(content=SYSTEM_PROMPT),
-            HumanMessage(content=user_prompt),
-        ]
+    quiz_questions = []
+    last_error = None
 
-        response = llm.invoke(messages)
-        raw_text = response.content.strip()
+    for model_name in candidate_models:
+        try:
+            llm = ChatGoogleGenerativeAI(
+                model=model_name,
+                temperature=0.5,
+                max_output_tokens=2048,
+            )
 
-        quiz_questions = _parse_quiz_json(raw_text)
-
-        if not quiz_questions:
-            logger.warning("Quiz generation returned empty — using fallback.")
-            quiz_questions = [
-                {
-                    "question": "Based on the material covered, which statement is most accurate?",
-                    "options": [
-                        "A) The explanation was too brief to generate questions",
-                        "B) Quiz generation encountered an error",
-                        "C) Please try regenerating the quiz",
-                        "D) All of the above",
-                    ],
-                    "correct_answer": "D",
-                    "explanation": "The quiz generator was unable to parse questions from the LLM response. Please try again.",
-                }
+            messages = [
+                SystemMessage(content=SYSTEM_PROMPT),
+                HumanMessage(content=user_prompt),
             ]
 
-        logger.info("QuizGen produced %d question(s).", len(quiz_questions))
+            response = llm.invoke(messages)
+            if isinstance(response.content, str):
+                raw_text = response.content.strip()
+            elif isinstance(response.content, list):
+                raw_text = "".join(part.get("text", "") if isinstance(part, dict) else str(part) for part in response.content).strip()
+            else:
+                raw_text = str(response.content).strip()
 
-    except Exception as exc:
-        logger.error("QuizGen LLM call failed: %s", exc)
+            parsed = _parse_quiz_json(raw_text)
+            if parsed:
+                quiz_questions = parsed
+                logger.info("QuizGen produced %d question(s) using model %s.", len(quiz_questions), model_name)
+                break
+        except Exception as exc:
+            logger.warning("QuizGen LLM call with %s failed: %s", model_name, exc)
+            last_error = exc
+
+    if not quiz_questions:
+        logger.warning("All QuizGen candidate models failed or returned empty. Last error: %s", last_error)
         quiz_questions = []
 
     return {

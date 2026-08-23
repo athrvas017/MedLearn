@@ -46,7 +46,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # LLM Configuration — Google Gemini free tier
 # ---------------------------------------------------------------------------
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 
 FAITHFULNESS_THRESHOLD = 0.7
 
@@ -136,29 +136,52 @@ def evaluator_node(state: Dict[str, Any]) -> Dict[str, Any]:
         "Return ONLY a JSON object."
     )
 
-    try:
-        llm = ChatGoogleGenerativeAI(
-            model=GEMINI_MODEL,
-            temperature=0.1,  # Low temperature for consistent evaluation
-            max_output_tokens=512,
-        )
+    candidate_models = list(dict.fromkeys([
+        GEMINI_MODEL,
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-flash-latest",
+    ]))
 
-        messages = [
-            SystemMessage(content=SYSTEM_PROMPT),
-            HumanMessage(content=user_prompt),
-        ]
+    evaluation_result = None
+    last_error = None
 
-        response = llm.invoke(messages)
-        raw_text = response.content.strip()
+    for model_name in candidate_models:
+        try:
+            llm = ChatGoogleGenerativeAI(
+                model=model_name,
+                temperature=0.1,  # Low temperature for consistent evaluation
+                max_output_tokens=2048,
+            )
 
-        evaluation_result = _parse_eval_json(raw_text)
+            messages = [
+                SystemMessage(content=SYSTEM_PROMPT),
+                HumanMessage(content=user_prompt),
+            ]
 
-    except Exception as exc:
-        logger.error("Evaluator LLM call failed: %s", exc)
+            response = llm.invoke(messages)
+            if isinstance(response.content, str):
+                raw_text = response.content.strip()
+            elif isinstance(response.content, list):
+                raw_text = "".join(part.get("text", "") if isinstance(part, dict) else str(part) for part in response.content).strip()
+            else:
+                raw_text = str(response.content).strip()
+
+            evaluation_result = _parse_eval_json(raw_text)
+            if evaluation_result and "grounded_score" in evaluation_result:
+                logger.info("Evaluator completed using model %s.", model_name)
+                break
+        except Exception as exc:
+            logger.warning("Evaluator LLM call with %s failed: %s", model_name, exc)
+            last_error = exc
+
+    if not evaluation_result:
+        logger.error("All evaluator candidate models failed. Last error: %s", last_error)
         evaluation_result = {
             "grounded_score": 0.5,
             "is_faithful": False,
-            "reasoning": f"Evaluation failed due to an error: {exc}",
+            "reasoning": f"Evaluation failed due to an error: {last_error}",
         }
 
     # Ensure required keys exist with proper types

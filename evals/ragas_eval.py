@@ -423,7 +423,7 @@ def _gemini_answer_relevancy(question: str, answer: str) -> float:
         from langchain_core.messages import HumanMessage, SystemMessage
 
         llm = ChatGoogleGenerativeAI(
-            model=os.getenv("GEMINI_MODEL", "gemini-2.0-flash"),
+            model=os.getenv("GEMINI_MODEL", "gemini-3.6-flash"),
             temperature=0.1,
             max_output_tokens=64,
         )

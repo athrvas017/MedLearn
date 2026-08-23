@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # LLM Configuration — Google Gemini free tier
 # ---------------------------------------------------------------------------
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 
 SYSTEM_PROMPT = """You are MedLearn — an expert medical/anatomy study assistant for students.
 Your job is to produce clear, accurate, educational explanations grounded in the provided source material.
@@ -109,28 +109,51 @@ def explainer_node(state: Dict[str, Any]) -> Dict[str, Any]:
 
     user_prompt = _build_user_prompt(user_query, retrieved_chunks, image_caption)
 
-    try:
-        llm = ChatGoogleGenerativeAI(
-            model=GEMINI_MODEL,
-            temperature=0.3,
-            max_output_tokens=1024,
-        )
+    candidate_models = list(dict.fromkeys([
+        GEMINI_MODEL,
+        "gemini-3.5-flash-lite",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-flash-latest",
+    ]))
 
-        messages = [
-            SystemMessage(content=SYSTEM_PROMPT),
-            HumanMessage(content=user_prompt),
-        ]
+    explanation = ""
+    last_error = None
 
-        response = llm.invoke(messages)
-        explanation = response.content.strip()
-        logger.info("Explainer generated %d-char explanation.", len(explanation))
+    for model_name in candidate_models:
+        try:
+            llm = ChatGoogleGenerativeAI(
+                model=model_name,
+                temperature=0.3,
+                max_output_tokens=2048,
+            )
 
-    except Exception as exc:
-        logger.error("Explainer LLM call failed: %s", exc)
+            messages = [
+                SystemMessage(content=SYSTEM_PROMPT),
+                HumanMessage(content=user_prompt),
+            ]
+
+            response = llm.invoke(messages)
+            if isinstance(response.content, str):
+                explanation = response.content.strip()
+            elif isinstance(response.content, list):
+                explanation = "".join(part.get("text", "") if isinstance(part, dict) else str(part) for part in response.content).strip()
+            else:
+                explanation = str(response.content).strip()
+
+            if explanation:
+                logger.info("Explainer generated %d-char explanation using model %s.", len(explanation), model_name)
+                break
+        except Exception as exc:
+            logger.warning("Explainer LLM call with %s failed: %s", model_name, exc)
+            last_error = exc
+
+    if not explanation:
+        logger.error("All explainer candidate models failed. Last error: %s", last_error)
         explanation = (
             "I was unable to generate an explanation at this time. "
             "Please try again or rephrase your question.\n\n"
-            f"Error: {exc}"
+            f"Error: {last_error}"
         )
 
     return {
