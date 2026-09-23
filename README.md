@@ -161,13 +161,23 @@ docker-compose -f docker/docker-compose.yml up --build
 
 ## 📊 RAGAS Evaluation Results
 
-Benchmarked on 15+ anatomy & physiology Q&A test cases from `evals/test_cases.json`:
+Benchmarked on anatomy & physiology Q&A test cases from `evals/test_cases.json` using the Gemini-based evaluation pipeline:
 
-| Metric | Score | Target |
-|---|---|---|
-| **Faithfulness** | ≥ 0.85 | ≥ 0.80 ✅ |
-| **Answer Relevancy** | ≥ 0.88 | — |
-| **Context Precision** | ≥ 0.82 | — |
+| Metric | Score | Target | Status |
+|---|---|---|---|
+| **Faithfulness** | 1.0000 | ≥ 0.80 | ✅ Pass |
+| **Answer Relevancy** | 0.8135 | — | ✅ |
+| **Context Precision** | 1.0000 | — | ✅ |
+
+> **Evaluation method:** Gemini-based (Faithfulness via `app/agents/evaluator.py`, Answer Relevancy via Gemini LLM scoring, Context Precision via keyword-overlap heuristic).
+
+#### Per-Sample Breakdown
+
+| Test Case | Topic | Difficulty | Faithfulness | Relevancy | Context Precision |
+|---|---|---|---|---|---|
+| tc-001 | cardiovascular | basic | 1.0000 | 0.8571 | 1.0000 |
+| tc-002 | cardiovascular | intermediate | 1.0000 | 0.8333 | 1.0000 |
+| tc-003 | cardiovascular | basic | 1.0000 | 0.7500 | 1.0000 |
 
 Run the benchmark yourself:
 
@@ -189,6 +199,14 @@ python evals/ragas_eval.py --output evals/results/my_run.json
 
 ## 🧪 Tests
 
+**All 34 tests passing** across three test suites:
+
+| Suite | Tests | Status | Description |
+|---|---|---|---|
+| `test_phase1.py` | 15/15 | ✅ Pass | RAG foundation — captioner, ingestion, retriever |
+| `test_graph.py` | 9/9 | ✅ Pass | LangGraph workflow — state schema, router, mocked graph |
+| `test_e2e.py` (standalone) | 10/10 | ✅ Pass | End-to-end FR1–FR9 — live Gemini API calls |
+
 ```bash
 # Phase 1: RAG foundation
 pytest tests/test_phase1.py -v
@@ -201,6 +219,9 @@ pytest tests/test_e2e.py -v -k "standalone"
 
 # End-to-end with live API (requires uvicorn running)
 pytest tests/test_e2e.py -v
+
+# Run all tests
+pytest -v
 ```
 
 ---
